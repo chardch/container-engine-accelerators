@@ -60,6 +60,12 @@ spec:
       - name: root-mount
         hostPath:
           path: /
+      - name: cos-tools
+        hostPath:
+          path: /var/lib/cos-tools
+      - name: kernel-src
+        hostPath:
+          path: /var/lib/kernel-src
       initContainers:
       - image: "cos-nvidia-installer:fixed"
         imagePullPolicy: Never
@@ -83,6 +89,10 @@ spec:
           mountPath: /dev
         - name: root-mount
           mountPath: /root
+        - name: cos-tools
+          mountPath: /build/cos-tools
+        - name: kernel-src
+          mountPath: /build/usr/src/linux
       containers:
       - image: "gcr.io/google-containers/pause:2.0"
         name: pause
